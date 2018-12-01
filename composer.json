@@ -1,0 +1,33 @@
+{
+	"name" : "dicr/yii2-cache",
+	"description" : "Компоненты кэша yii2",
+	"type" : "library",
+	"authors" : [{
+			"name" : "Igor Tarasov",
+			"email" : "develop@dicr.org",
+			"homepage" : "http://dicr.org",
+			"role" : "developer"
+		}
+	],
+	"minimum-stability" : "stable",
+	"require" : {
+		"yiisoft/yii2" : "~2.0"
+	},
+	"autoload" : {
+		"psr-4" : {
+			"dicr\\cache\\" : "src"
+		}
+	},
+	"keywords" : [
+		"php yii2 cache"
+	],
+	"repositories" : [{
+			"type" : "composer",
+			"url" : "https://asset-packagist.org"
+		}
+	],
+	"homepage" : "https://gitlab.com/dicrtarasov/yii2-cache",
+	"support" : {
+		"source" : "https://gitlab.com/dicrtarasov/yii2-cache.git"
+	}
+}

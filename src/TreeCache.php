@@ -1,5 +1,5 @@
 <?php
-namespace app\lib\cache;
+namespace dicr\cache;
 
 use dicr\helper\ArrayHelper;
 use yii\caching\Cache;

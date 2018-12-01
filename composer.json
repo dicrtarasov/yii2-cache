@@ -11,7 +11,8 @@
 	],
 	"minimum-stability" : "stable",
 	"require" : {
-		"yiisoft/yii2" : "~2.0"
+		"yiisoft/yii2" : "~2.0",
+		"dicr/yii2-helper" : "~1.0"
 	},
 	"autoload" : {
 		"psr-4" : {
@@ -24,6 +25,9 @@
 	"repositories" : [{
 			"type" : "composer",
 			"url" : "https://asset-packagist.org"
+		}, {
+			"type" : "git",
+			"url" : "https://gitlab.com/dicrtarasov/yii2-helper.git"
 		}
 	],
 	"homepage" : "https://gitlab.com/dicrtarasov/yii2-cache",

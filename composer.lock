@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "42d0305d167ebe817dd9b989b036d864",
-    "content-hash": "55eed3c8f3abd42d2c718af4119b7b85",
+    "hash": "015382132f6327b330f6650dd331a30e",
+    "content-hash": "8968d75efb4037ce0ace0be03dd0420e",
     "packages": [
         {
             "name": "bower-asset/inputmask",
@@ -145,6 +145,41 @@
                 "markdown-extra"
             ],
             "time": "2017-07-16 21:13:23"
+        },
+        {
+            "name": "dicr/yii2-helper",
+            "version": "1.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://gitlab.com/dicrtarasov/yii2-helper.git",
+                "reference": "a87bf3e525942a1090783726a16eae01b20cba4e"
+            },
+            "require": {
+                "yiisoft/yii2": "~2.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "dicr\\helper\\": "src"
+                }
+            },
+            "authors": [
+                {
+                    "name": "Igor Tarasov",
+                    "email": "develop@dicr.org",
+                    "homepage": "http://dicr.org",
+                    "role": "developer"
+                }
+            ],
+            "description": "Полезные утилиты для yii2",
+            "homepage": "https://gitlab.com/dicrtarasov/yii2-helper",
+            "keywords": [
+                "php yii2 helper"
+            ],
+            "support": {
+                "source": "https://gitlab.com/dicrtarasov/yii2-helper.git"
+            },
+            "time": "2018-12-01 15:28:08"
         },
         {
             "name": "ezyang/htmlpurifier",

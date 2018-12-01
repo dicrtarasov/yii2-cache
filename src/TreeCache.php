@@ -1,7 +1,7 @@
 <?php
 namespace app\lib\cache;
 
-use app\lib\helpers\ArrayHelper;
+use dicr\helper\ArrayHelper;
 use yii\caching\Cache;
 
 /**

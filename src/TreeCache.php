@@ -13,9 +13,7 @@ use yii\caching\Cache;
  */
 class TreeCache extends Cache {
 	
-	/**
-	 * @inheritdoc
-	 */
+	/** @inheritdoc  */
 	public $serializer = false;
 
 	/** @var array */

@@ -12,7 +12,7 @@
 	"minimum-stability" : "stable",
 	"require" : {
 		"yiisoft/yii2" : "~2.0",
-		"dicr/yii2-helper" : "~1.0"
+		"dicr/yii2-helper" : "~1.1"
 	},
 	"autoload" : {
 		"psr-4" : {
@@ -27,11 +27,12 @@
 			"url" : "https://asset-packagist.org"
 		}, {
 			"type" : "git",
-			"url" : "https://gitlab.com/dicrtarasov/yii2-helper.git"
+			"url" : "https://gitlab.com/dicr/yii2-helper.git",
+			"name" : "yii2-helper"
 		}
 	],
-	"homepage" : "https://gitlab.com/dicrtarasov/yii2-cache",
+	"homepage" : "https://gitlab.com/dicr/yii2-cache",
 	"support" : {
-		"source" : "https://gitlab.com/dicrtarasov/yii2-cache.git"
+		"source" : "https://gitlab.com/dicr/yii2-cache.git"
 	}
 }

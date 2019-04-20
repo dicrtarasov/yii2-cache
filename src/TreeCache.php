@@ -31,32 +31,31 @@ class TreeCache extends Cache
     {
         $key = array_merge($this->keyPrefix ?? [], (array) $key);
 
-        $key = array_map(
-            function ($item) {
-                if (is_null($item)) {
-                    return 'null';
-                }
+        // каждый элемент ключа переводим в строку
+        $key = array_map(function ($item) {
+            if (is_null($item)) {
+                return 'null';
+            }
 
-                if ($item === '') {
-                    return '';
-                }
+            if ($item === '') {
+                return '';
+            }
 
-                if (is_numeric($item)) {
-                    return (string) $item;
-                }
+            if (is_bool($item)) {
+                return $item ? 'true' : 'false';
+            }
 
-                if (is_bool($item)) {
-                    return $item ? 'true' : 'false';
-                }
+            $item = is_scalar($item) ? (string)$item : serialize($item);
 
-                if (! is_string($item)) {
-                    $item = json_encode($item, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
-                }
+            if (strlen($item) > 32) {
+                $item = md5($item);
+            }
 
-                return strlen($item) <= 32 ? $item : md5($item);
-            }, $key);
+            return $item;
+        }, $key);
 
-        return json_encode($key, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
+        // возвращаем строку ключа
+        return serialize($key);
     }
 
     /**
@@ -67,7 +66,7 @@ class TreeCache extends Cache
      */
     protected function unpackKey(string $key)
     {
-        return json_decode($key, true);
+        return unserialize($key);
     }
 
     /**

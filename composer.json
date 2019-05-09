@@ -13,7 +13,7 @@
 	"require" : {
 		"php" : ">=7.0",
 		"yiisoft/yii2" : "~2.0",
-		"dicr/yii2-helper" : "~1.1"
+		"dicr/yii2-helper" : "~1.2"
 	},
 	"autoload" : {
 		"psr-4" : {

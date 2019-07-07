@@ -111,4 +111,24 @@ class TreeCache extends Cache
         $this->_cache = [];
         return true;
     }
+
+    /**
+     * Загружает содержимое данными
+     *
+     * @param array $content
+     */
+    public function load(array $content)
+    {
+        $this->_cache = $content;
+    }
+
+    /**
+     * Возвращает содержимое
+     *
+     * @return array
+     */
+    public function save()
+    {
+        return $this->_cache;
+    }
 }

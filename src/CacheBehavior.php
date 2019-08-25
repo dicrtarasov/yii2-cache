@@ -43,7 +43,7 @@ class CacheBehavior extends Behavior
      */
     public function attach($owner)
     {
-        if (!is_a($owner, ActiveRecord::clas, false)) {
+        if (!is_a($owner, ActiveRecord::class, false)) {
             throw new InvalidArgumentException('owner должен быть подклассом ActiveRecord');
         }
 

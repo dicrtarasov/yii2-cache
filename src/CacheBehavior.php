@@ -76,11 +76,14 @@ class CacheBehavior extends Behavior
      *
      * @param \yii\db\AfterSaveEvent $event
      */
-    public function _handleModelUpdate(AfterSaveEvent $event)
+    public function _handleModelUpdate(Event $event)
     {
-        if (!empty($event->changedAttributes)) {
-            $this->invalidateModelCache();
+        // пропускаем если никакие характрисики не обновились
+        if (($event instanceof AfterSaveEvent) && empty($event->changedAttributes)) {
+            return;
         }
+
+        $this->invalidateModelCache();
     }
 
     /**

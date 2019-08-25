@@ -57,21 +57,9 @@ class CacheBehavior extends Behavior
     public function events()
     {
         return [
-            ActiveRecord::EVENT_AFTER_DELETE => function(Event $event) {
-                $this->invalidateModelCache();
-            },
-
-            ActiveRecord::EVENT_AFTER_INSERT => function(AfterSaveEvent $event) {
-                if (!empty($event->changedAttributes)) {
-                    $this->invalidateModelCache();
-                }
-            },
-
-            ActiveRecord::EVENT_AFTER_UPDATE => function(AfterSaveEvent $event) {
-                if (!empty($event->changedAttributes)) {
-                    $this->invalidateModelCache();
-                }
-            }
+            ActiveRecord::EVENT_AFTER_DELETE => '_handleModelUpdate',
+            ActiveRecord::EVENT_AFTER_INSERT => '_handleModelUpdate',
+            ActiveRecord::EVENT_AFTER_UPDATE => '_handleModelDelete',
         ];
     }
 
@@ -81,5 +69,27 @@ class CacheBehavior extends Behavior
     public function invalidateModelCache()
     {
         TagDependency::invalidate($this->cache, get_class($this->owner));
+    }
+
+    /**
+     * Обработчик обновления модели.
+     *
+     * @param \yii\db\AfterSaveEvent $event
+     */
+    public function _handleModelUpdate(AfterSaveEvent $event)
+    {
+        if (!empty($event->changedAttributes)) {
+            $this->invalidateModelCache();
+        }
+    }
+
+    /**
+     * Обработчик удаления модели.
+     *
+     * @param \yii\base\Event $event
+     */
+    public function _handleModelDelete(Event $event)
+    {
+        $this->invalidateModelCache();
     }
 }

@@ -57,9 +57,9 @@ class CacheBehavior extends Behavior
     public function events()
     {
         return [
-            ActiveRecord::EVENT_AFTER_DELETE => '_handleModelUpdate',
-            ActiveRecord::EVENT_AFTER_INSERT => '_handleModelUpdate',
-            ActiveRecord::EVENT_AFTER_UPDATE => '_handleModelDelete',
+            ActiveRecord::EVENT_AFTER_INSERT => '_handleModelChange',
+            ActiveRecord::EVENT_AFTER_UPDATE => '_handleModelChange',
+            ActiveRecord::EVENT_AFTER_DELETE => '_handleModelChange',
         ];
     }
 
@@ -76,23 +76,13 @@ class CacheBehavior extends Behavior
      *
      * @param \yii\db\AfterSaveEvent $event
      */
-    public function _handleModelUpdate(Event $event)
+    public function _handleModelChange(Event $event)
     {
         // пропускаем если никакие характрисики не обновились
         if (($event instanceof AfterSaveEvent) && empty($event->changedAttributes)) {
             return;
         }
 
-        $this->invalidateModelCache();
-    }
-
-    /**
-     * Обработчик удаления модели.
-     *
-     * @param \yii\base\Event $event
-     */
-    public function _handleModelDelete(Event $event)
-    {
         $this->invalidateModelCache();
     }
 }

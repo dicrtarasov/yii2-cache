@@ -1,4 +1,13 @@
 <?php
+/**
+ * @copyright 2019-2020 Dicr http://dicr.org
+ * @author Igor A Tarasov <develop@dicr.org>
+ * @license proprietary
+ * @version 22.03.20 00:26:27
+ */
+
+declare(strict_types = 1);
+
 namespace dicr\cache;
 
 use yii\base\Behavior;
@@ -9,6 +18,7 @@ use yii\caching\TagDependency;
 use yii\db\ActiveRecord;
 use yii\db\AfterSaveEvent;
 use yii\di\Instance;
+use function get_class;
 
 /**
  * Очистка кэша при операциях с моделью.
@@ -18,8 +28,7 @@ use yii\di\Instance;
  *
  * По событиям изменения модели очищает кэш.
  *
- * @author Igor (Dicr) Tarasov <develop@dicr.org>
- * @version 2019
+ * @noinspection PhpUnused
  */
 class CacheBehavior extends Behavior
 {
@@ -28,7 +37,7 @@ class CacheBehavior extends Behavior
 
     /**
      * {@inheritDoc}
-     * @see \yii\base\BaseObject::init()
+     * @throws \yii\base\InvalidConfigException
      */
     public function init()
     {
@@ -39,11 +48,10 @@ class CacheBehavior extends Behavior
 
     /**
      * {@inheritDoc}
-     * @see \yii\base\Behavior::attach()
      */
     public function attach($owner)
     {
-        if (!is_a($owner, ActiveRecord::class, false)) {
+        if (! is_a($owner, ActiveRecord::class, false)) {
             throw new InvalidArgumentException('owner должен быть подклассом ActiveRecord');
         }
 
@@ -68,17 +76,19 @@ class CacheBehavior extends Behavior
      */
     public function invalidateModelCache()
     {
-        TagDependency::invalidate($this->cache, get_class($this->owner));
+        if ($this->owner) {
+            TagDependency::invalidate($this->cache, get_class($this->owner));
+        }
     }
 
     /**
      * Обработчик обновления модели.
      *
-     * @param \yii\db\AfterSaveEvent $event
+     * @param \yii\base\Event $event
      */
     public function _handleModelChange(Event $event)
     {
-        // пропускаем если никакие характрисики не обновились
+        // пропускаем если никакие характеристики не обновились
         if (($event instanceof AfterSaveEvent) && empty($event->changedAttributes)) {
             return;
         }

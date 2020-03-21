@@ -1,40 +1,41 @@
 {
-	"name" : "dicr/yii2-cache",
-	"description" : "Cache components for Yii2",
-	"type" : "yii2-extension",
-	"authors" : [{
-			"name" : "Igor Tarasov",
-			"email" : "develop@dicr.org",
-			"homepage" : "http://dicr.org",
-			"role" : "developer"
-		}
-	],
-	"minimum-stability" : "dev",
-	"prefer-stable" : true,
-	"require" : {
-		"php" : ">=7.0",
-		"yiisoft/yii2" : "~2.0",
-		"dicr/yii2-helper" : ">=1.5.3"
-	},
-	"autoload" : {
-		"psr-4" : {
-			"dicr\\cache\\" : "src"
-		}
-	},
-	"keywords" : [
-		"php yii2 cache"
-	],
-	"repositories" : [{
-			"type" : "composer",
-			"url" : "https://asset-packagist.org"
-		}, {
-			"type" : "git",
-			"url" : "https://gitlab.com/dicr/yii2-helper.git",
-			"name" : "yii2-helper"
-		}
-	],
-	"homepage" : "https://gitlab.com/dicr/yii2-cache",
-	"support" : {
-		"source" : "https://gitlab.com/dicr/yii2-cache.git"
-	}
+    "name": "dicr/yii2-cache",
+    "description": "Cache components for Yii2",
+    "license": "MIT",
+    "type": "yii2-extension",
+    "authors": [
+        {
+            "name": "Igor Tarasov",
+            "email": "develop@dicr.org",
+            "homepage": "http://dicr.org",
+            "role": "developer"
+        }
+    ],
+    "homepage": "https://gitlab.com/dicr/yii2-cache",
+    "support": {
+        "source": "https://gitlab.com/dicr/yii2-cache.git"
+    },
+    "keywords": ["dicr", "php", "yii2", "cache"],
+    "autoload": {
+        "psr-4": {
+            "dicr\\cache\\": "src"
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "require": {
+        "php": ">=7.2",
+        "yiisoft/yii2": "~2.0.32",
+        "dicr/yii2-helper": "~2.1.10"
+    },
+    "repositories": [
+        {
+            "type": "git",
+            "url": "https://gitlab.com/dicr/yii2-helper.git",
+            "name": "yii2-helper"
+        }, {
+            "type": "composer",
+            "url": "https://asset-packagist.org"
+        }
+    ]
 }

@@ -1,15 +1,25 @@
 <?php
+/**
+ * @copyright 2019-2020 Dicr http://dicr.org
+ * @author Igor A Tarasov <develop@dicr.org>
+ * @license proprietary
+ * @version 22.03.20 00:31:39
+ */
+
+declare(strict_types = 1);
 namespace dicr\cache;
 
 use dicr\helper\ArrayHelper;
 use yii\caching\Cache;
+use function is_bool;
+use function strlen;
 
 /**
  * Кэш в памяти в виде дерева.
  * Можно получить всю ветку значений.
  *
- * @author Igor (Dicr) Tarasov <develop@dicr.org>
- * @version 2018
+ * @noinspection PhpUnused
+ * @noinspection MissingPropertyAnnotationsInspection
  */
 class TreeCache extends Cache
 {
@@ -24,16 +34,16 @@ class TreeCache extends Cache
     /**
      * {@inheritdoc}
      *
-     * @return array
+     * @return string
      * @see \yii\caching\Cache::buildKey()
      */
     public function buildKey($key)
     {
-        $key = array_merge($this->keyPrefix ?? [], (array) $key);
+        $key = array_merge($this->keyPrefix ? (array)$this->keyPrefix : [], (array)$key);
 
         // каждый элемент ключа переводим в строку
-        $key = array_map(function ($item) {
-            if (is_null($item)) {
+        $key = array_map(static function($item) {
+            if ($item === null) {
                 return 'null';
             }
 
@@ -66,7 +76,7 @@ class TreeCache extends Cache
      */
     protected function unpackKey(string $key)
     {
-        return unserialize($key);
+        return unserialize($key, false);
     }
 
     /**

@@ -25,8 +25,8 @@
     "prefer-stable": true,
     "require": {
         "php": ">=7.2",
-        "yiisoft/yii2": "~2.0.32",
-        "dicr/yii2-helper": "~2.1.10"
+        "yiisoft/yii2": "~2.0.35",
+        "dicr/yii2-helper": "~2.2.0"
     },
     "repositories": [
         {

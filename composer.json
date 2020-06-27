@@ -26,16 +26,10 @@
     "require": {
         "php": ">=7.2",
         "yiisoft/yii2": "~2.0.35",
-        "dicr/yii2-helper": "~2.3.0"
+        "dicr/yii2-helper": "~2.4.0"
     },
     "repositories": [
-        {
-            "type": "git",
-            "url": "https://gitlab.com/dicr/yii2-helper.git",
-            "name": "yii2-helper"
-        }, {
-            "type": "composer",
-            "url": "https://asset-packagist.org"
-        }
+        {"type": "git", "url": "https://gitlab.com/dicr/yii2-helper.git"},
+        {"type": "composer", "url": "https://asset-packagist.org"}
     ]
 }

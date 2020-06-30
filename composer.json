@@ -18,7 +18,7 @@
     },
     "autoload": {
         "psr-4": {
-            "dicr\\cache\\": "src"
+            "dicr\\cache\\": "src/"
         }
     },
     "minimum-stability": "dev",

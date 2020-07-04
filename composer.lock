@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "5e5dd7e36d6d14f5293d62c152a2a7f6",
+    "content-hash": "207fc27e6e93cdc5c580a58b5b29b544",
     "packages": [
         {
             "name": "bower-asset/inputmask",
@@ -143,20 +143,20 @@
         },
         {
             "name": "dicr/yii2-helper",
-            "version": "2.4.0",
+            "version": "3.0.1",
             "source": {
                 "type": "git",
                 "url": "https://gitlab.com/dicr/yii2-helper.git",
-                "reference": "d05de7719c897ec41362385f81cc89cfda650fe5"
+                "reference": "d018fa682ae8d55852d44c19976d1bc747918c63"
             },
             "require": {
                 "ext-intl": "*",
                 "ext-mbstring": "*",
-                "php": ">=7.2",
-                "yiisoft/yii2": "~2.0.35"
+                "php": "7.*",
+                "yiisoft/yii2": "2.*"
             },
             "require-dev": {
-                "phpunit/phpunit": "~8.5.8",
+                "phpunit/phpunit": "8.*",
                 "roave/security-advisories": "dev-master"
             },
             "type": "yii2-extension",
@@ -193,20 +193,20 @@
             "support": {
                 "source": "https://gitlab.com/dicr/yii2-helper.git"
             },
-            "time": "2020-06-27T14:17:16+00:00"
+            "time": "2020-07-04T06:56:05+00:00"
         },
         {
             "name": "ezyang/htmlpurifier",
-            "version": "v4.12.0",
+            "version": "v4.13.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ezyang/htmlpurifier.git",
-                "reference": "a617e55bc62a87eec73bd456d146d134ad716f03"
+                "reference": "08e27c97e4c6ed02f37c5b2b20488046c8d90d75"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ezyang/htmlpurifier/zipball/a617e55bc62a87eec73bd456d146d134ad716f03",
-                "reference": "a617e55bc62a87eec73bd456d146d134ad716f03",
+                "url": "https://api.github.com/repos/ezyang/htmlpurifier/zipball/08e27c97e4c6ed02f37c5b2b20488046c8d90d75",
+                "reference": "08e27c97e4c6ed02f37c5b2b20488046c8d90d75",
                 "shasum": ""
             },
             "require": {
@@ -222,6 +222,9 @@
                 },
                 "files": [
                     "library/HTMLPurifier.composer.php"
+                ],
+                "exclude-from-classmap": [
+                    "/library/HTMLPurifier/Language/"
                 ]
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -240,7 +243,7 @@
             "keywords": [
                 "html"
             ],
-            "time": "2019-10-28T03:44:26+00:00"
+            "time": "2020-06-29T00:56:53+00:00"
         },
         {
             "name": "yiisoft/yii2",
@@ -419,7 +422,7 @@
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
-        "php": ">=7.2"
+        "php": "~7.2"
     },
     "platform-dev": [],
     "plugin-api-version": "1.1.0"

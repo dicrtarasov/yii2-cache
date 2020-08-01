@@ -3,13 +3,14 @@
  * @copyright 2019-2020 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
  * @license proprietary
- * @version 22.03.20 00:31:39
+ * @version 01.08.20 13:55:42
  */
 
 declare(strict_types = 1);
 namespace dicr\cache;
 
 use dicr\helper\ArrayHelper;
+use Exception;
 use yii\caching\Cache;
 use function is_bool;
 use function strlen;
@@ -18,14 +19,11 @@ use function strlen;
  * Кэш в памяти в виде дерева.
  * Можно получить всю ветку значений.
  *
- * @noinspection PhpUnused
  * @noinspection MissingPropertyAnnotationsInspection
  */
 class TreeCache extends Cache
 {
-    /**
-     * @inheritdoc
-     */
+    /** @inheritDoc */
     public $serializer = false;
 
     /** @var array */
@@ -81,6 +79,7 @@ class TreeCache extends Cache
 
     /**
      * {@inheritdoc}
+     * @throws Exception
      */
     protected function getValue($key)
     {

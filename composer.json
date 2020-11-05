@@ -1,9 +1,9 @@
 {
     "name": "dicr/yii2-cache",
-    "description": "Cache components for Yii2",
-    "license": "MIT",
     "type": "yii2-extension",
-    "keywords": ["dicr", "php", "yii2", "cache"],
+    "license": "MIT",
+    "description": "Cache components for Yii2",
+    "keywords": ["dicr", "yii2", "cache"],
     "homepage": "https://gitlab.com/dicr/yii2-cache",
     "authors": [
         {
@@ -21,12 +21,12 @@
             "dicr\\cache\\": "src/"
         }
     },
-    "minimum-stability": "dev",
+    "minimum-stability": "stable",
     "prefer-stable": true,
     "require": {
-        "php": "~7.2",
+        "php": "~7.3",
         "yiisoft/yii2": "~2.0",
-        "dicr/yii2-helper": "~3.3"
+        "dicr/yii2-helper": "~4.0"
     },
     "repositories": [
         {"type": "git", "url": "https://gitlab.com/dicr/yii2-helper.git"},

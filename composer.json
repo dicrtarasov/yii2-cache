@@ -24,12 +24,15 @@
     "minimum-stability": "dev",
     "prefer-stable": true,
     "require": {
-        "php": "~7.2",
+        "php": "~7.4 || ~8.0.1",
         "yiisoft/yii2": "~2.0",
-        "dicr/yii2-helper": "~3.3"
+        "dicr/yii2-helper": "~4.0"
+    },
+    "require-dev": {
+        "roave/security-advisories": "dev-master"
     },
     "repositories": [
-        {"type": "git", "url": "https://gitlab.com/dicr/yii2-helper.git"},
-        {"type": "composer", "url": "https://asset-packagist.org"}
+        {"type": "composer", "url": "https://asset-packagist.org"},
+        {"type": "git", "url": "https://gitlab.com/dicr/yii2-helper.git"}
     ]
 }

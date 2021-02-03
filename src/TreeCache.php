@@ -1,9 +1,9 @@
 <?php
-/**
- * @copyright 2019-2020 Dicr http://dicr.org
+/*
+ * @copyright 2019-2021 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
- * @license proprietary
- * @version 01.08.20 13:55:42
+ * @license Apache-2.0
+ * @version 03.02.21 20:42:02
  */
 
 declare(strict_types = 1);
@@ -12,6 +12,7 @@ namespace dicr\cache;
 use dicr\helper\ArrayHelper;
 use Exception;
 use yii\caching\Cache;
+
 use function is_bool;
 use function strlen;
 
@@ -31,11 +32,8 @@ class TreeCache extends Cache
 
     /**
      * {@inheritdoc}
-     *
-     * @return string
-     * @see \yii\caching\Cache::buildKey()
      */
-    public function buildKey($key)
+    public function buildKey($key): string
     {
         $key = array_merge($this->keyPrefix ? (array)$this->keyPrefix : [], (array)$key);
 
@@ -72,33 +70,35 @@ class TreeCache extends Cache
      * @param string $key массив в формате json
      * @return array
      */
-    protected function unpackKey(string $key)
+    protected function unpackKey(string $key): array
     {
         return unserialize($key, false);
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritdoc
+     * @return mixed
      * @throws Exception
      */
     protected function getValue($key)
     {
-        return ArrayHelper::getValue($this->_cache, $this->unpackKey($key)) ?? false;
+        return ArrayHelper::getValue($this->_cache, $this->unpackKey($key), false);
     }
 
     /**
      * {@inheritdoc}
      */
-    protected function setValue($key, $value, $duration)
+    protected function setValue($key, $value, $duration): bool
     {
         ArrayHelper::setValue($this->_cache, $this->unpackKey($key), $value);
+
         return true;
     }
 
     /**
      * {@inheritdoc}
      */
-    protected function addValue($key, $value, $duration)
+    protected function addValue($key, $value, $duration): bool
     {
         return $this->exists($key) ? false : $this->setValue($key, $value, $duration);
     }
@@ -106,18 +106,20 @@ class TreeCache extends Cache
     /**
      * {@inheritdoc}
      */
-    protected function deleteValue($key)
+    protected function deleteValue($key): bool
     {
         ArrayHelper::remove($this->_cache, $this->unpackKey($key));
+
         return true;
     }
 
     /**
      * {@inheritdoc}
      */
-    protected function flushValues()
+    protected function flushValues(): bool
     {
         $this->_cache = [];
+
         return true;
     }
 
@@ -126,7 +128,7 @@ class TreeCache extends Cache
      *
      * @param array $content
      */
-    public function load(array $content)
+    public function load(array $content): void
     {
         $this->_cache = $content;
     }
@@ -136,7 +138,7 @@ class TreeCache extends Cache
      *
      * @return array
      */
-    public function save()
+    public function save(): array
     {
         return $this->_cache;
     }

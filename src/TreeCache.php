@@ -31,14 +31,14 @@ class TreeCache extends Cache
     private $_cache = [];
 
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
-    public function buildKey($key): string
+    public function buildKey($key) : string
     {
-        $key = array_merge($this->keyPrefix ? (array)$this->keyPrefix : [], (array)$key);
+        $key = array_merge((array)($this->keyPrefix ?: []), (array)$key);
 
         // каждый элемент ключа переводим в строку
-        $key = array_map(static function($item) {
+        $key = array_map(static function ($item) : string {
             if ($item === null) {
                 return 'null';
             }
@@ -70,7 +70,7 @@ class TreeCache extends Cache
      * @param string $key массив в формате json
      * @return array
      */
-    protected function unpackKey(string $key): array
+    protected function unpackKey(string $key) : array
     {
         return unserialize($key, false);
     }
@@ -88,7 +88,7 @@ class TreeCache extends Cache
     /**
      * {@inheritdoc}
      */
-    protected function setValue($key, $value, $duration): bool
+    protected function setValue($key, $value, $duration) : bool
     {
         ArrayHelper::setValue($this->_cache, $this->unpackKey($key), $value);
 
@@ -98,7 +98,7 @@ class TreeCache extends Cache
     /**
      * {@inheritdoc}
      */
-    protected function addValue($key, $value, $duration): bool
+    protected function addValue($key, $value, $duration) : bool
     {
         return $this->exists($key) ? false : $this->setValue($key, $value, $duration);
     }
@@ -106,7 +106,7 @@ class TreeCache extends Cache
     /**
      * {@inheritdoc}
      */
-    protected function deleteValue($key): bool
+    protected function deleteValue($key) : bool
     {
         ArrayHelper::remove($this->_cache, $this->unpackKey($key));
 
@@ -116,7 +116,7 @@ class TreeCache extends Cache
     /**
      * {@inheritdoc}
      */
-    protected function flushValues(): bool
+    protected function flushValues() : bool
     {
         $this->_cache = [];
 
@@ -128,7 +128,7 @@ class TreeCache extends Cache
      *
      * @param array $content
      */
-    public function load(array $content): void
+    public function load(array $content) : void
     {
         $this->_cache = $content;
     }
@@ -138,7 +138,7 @@ class TreeCache extends Cache
      *
      * @return array
      */
-    public function save(): array
+    public function save() : array
     {
         return $this->_cache;
     }

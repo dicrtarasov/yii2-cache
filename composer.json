@@ -26,10 +26,10 @@
     "require": {
         "php": "~7.4 || ~8.0.1",
         "yiisoft/yii2": "~2.0",
-        "dicr/yii2-helper": "~4.0"
+        "dicr/yii2-helper": "~4.5"
     },
     "require-dev": {
-        "roave/security-advisories": "dev-master"
+        "roave/security-advisories": "dev-latest"
     },
     "repositories": [
         {"type": "composer", "url": "https://asset-packagist.org"},

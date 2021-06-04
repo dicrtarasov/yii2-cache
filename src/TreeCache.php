@@ -2,8 +2,8 @@
 /*
  * @copyright 2019-2021 Dicr http://dicr.org
  * @author Igor A Tarasov <develop@dicr.org>
- * @license Apache-2.0
- * @version 03.02.21 20:42:02
+ * @license BSD-3-Clause
+ * @version 04.06.21 15:23:48
  */
 
 declare(strict_types = 1);
@@ -19,8 +19,6 @@ use function strlen;
 /**
  * Кэш в памяти в виде дерева.
  * Можно получить всю ветку значений.
- *
- * @noinspection MissingPropertyAnnotationsInspection
  */
 class TreeCache extends Cache
 {
@@ -72,7 +70,9 @@ class TreeCache extends Cache
      */
     protected function unpackKey(string $key) : array
     {
-        return unserialize($key, false);
+        return unserialize($key, [
+            'allow_classes' => true
+        ]);
     }
 
     /**
@@ -100,7 +100,7 @@ class TreeCache extends Cache
      */
     protected function addValue($key, $value, $duration) : bool
     {
-        return $this->exists($key) ? false : $this->setValue($key, $value, $duration);
+        return ! $this->exists($key) && $this->setValue($key, $value, $duration);
     }
 
     /**
